@@ -1,0 +1,65 @@
+/* Style the select element */
+.form-select-lg {
+    /* Increase width for a wider dropdown */
+    width: 250px;  /* Adjust as needed */
+
+    /* Remove default browser styling */
+    appearance: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;  /* Add rounded corners */
+    padding: 5px 10px;  /* Add some padding */
+}
+
+/* Style the selected option */
+.form-select-lg:focus {
+    outline: none;  /* Remove default outline */
+    border-color: #ccc;  /* Change border color on focus */
+}
+
+.form-select-lg:hover {
+    background-color: #ddd;  /* Change background color on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  /* Increase shadow on hover */
+}
+
+/* Style the dropdown arrow */
+.form-select-lg::after {
+    content: "\25BC";  /* Downward arrow character */
+    font-size: 12px;
+    color: #888;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;  /* Prevent clicks on the arrow */
+}
+
+/* Style the dropdown options (hover effect) */
+.form-select-lg option:hover {
+    background-color: #eee;
+}
+
+
+#antall {
+    width: 100px;  /* Keep your set width */
+    border: none;  /* Remove default border */
+    background-color: #eee;  /* Add a background color */
+    border-radius: 5px;  /* Add rounded corners */
+    padding: 5px 10px;  /* Add some padding */
+    font-size: 16px;  /* Adjust font size if needed */
+    text-align: center;  /* Center the text inside the input */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  /* Add a subtle shadow */
+    transition: all 0.2s ease-in-out;  /* Add smooth transition on hover */
+}
+
+/* Style the input on hover */
+#antall:hover {
+    background-color: #ddd;  /* Change background color on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  /* Increase shadow on hover */
+}
+
+/* Style the input on focus */
+#antall:focus {
+    outline: none;  /* Remove default outline */
+    background-color: #fff;  /* Change background color on focus */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);  /* Increase shadow on focus */
+}

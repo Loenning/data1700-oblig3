@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Obligatorisk innlevering 1 i Webprogrammering - Data1700">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oblig 1: Bestilling av kinobilletter</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="jQueryOblig2.js"></script>
+
+    <style>
+        table {
+            display: inline-table;
+            text-align: left;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+<form>
+    <h1>Bestilling av kinobilletter</h1>
+
+    <lable for="film">Velg film:</lable>
+    <select id="film" name="film">
+        <option value="">Velg film her</option>
+        <option value="American Psycho">American Psycho</option>
+        <option value="Shawshank Redemption">Shawshank Redemption</option>
+        <option value="Fight Club">Fight Club</option>
+        <option value="The Big Short">The Big Short</option>
+        <option value="Tenacious D: The Pick of Destiny">Tenacious D: The Pick of Destiny</option>
+    </select>
+    <span id="wrongFilm" style="color:red;"></span>
+
+    <div><p></p></div>
+
+    <lable for="antall">Antall:</lable>
+    <input type="number" id="antall" style="width: 40px">
+    <span id="wrongAmount" style="color:red;"></span>
+
+    <div><p></p></div>
+
+    <table>
+        <tr>
+            <td>Fornavn</td>
+            <td>
+                <lable for="fornavn"></lable>
+                <input type="text" id="fornavn"></td>
+            <td id="wrongFirstName" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>Etternavn</td>
+            <td>
+                <lable for="etternavn"></lable>
+                <input type="text" id="etternavn"></td>
+            <td id="wrongLastName" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>Telefonnr</td>
+            <td>
+                <lable for="telefonnr"></lable>
+                <input type="tel" id="telefonnr"></td>
+            <td id="wrongNumber" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>Epost</td>
+            <td>
+                <lable for="epost"></lable>
+                <input type="email" id="epost"></td>
+            <td id="wrongEmail" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="buyTicket();return false" type="button" style="width: 80px">Kjøp billett</button>
+            </td>
+
+        </tr>
+    </table>
+
+    <div><p></p></div>
+
+    <h2></h2>
+
+    <h3>Alle billetter</h3>
+    <div id="list"></div>
+
+    <button onclick="deleteAll()">Slett alle billettene</button>
+
+    <div id="ut"></div>
+
+</form>
+
+<button> Move </button>
+<div style="background:blue; height:100px; width:100px; position:absolute;">
+</div>
+</body>
+</html>

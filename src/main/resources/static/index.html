@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Obligatorisk innlevering 1 i Webprogrammering - Data1700">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oblig 1: Bestilling av kinobilletter</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="oblig2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+
+    <style>
+        table {
+            display: inline-table;
+            text-align: left;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+<form>
+    <div class="jumbotron">
+    <h1>Bestilling av kinobilletter</h1>
+    </div>
+
+    <lable for="film">Velg film:</lable>
+    <select id="film" name="film" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="">Velg film her</option>
+        <option value="American Psycho">American Psycho</option>
+        <option value="Shawshank Redemption">Shawshank Redemption</option>
+        <option value="Fight Club">Fight Club</option>
+        <option value="The Big Short">The Big Short</option>
+        <option value="Tenacious D: The Pick of Destiny">Tenacious D: The Pick of Destiny</option>
+    </select>
+    <span id="wrongFilm" style="color:red;"></span>
+
+    <div><p></p></div>
+
+    <lable for="antall">Antall:</lable>
+    <input type="number" min="0" id="antall">
+    <span id="wrongAmount" style="color:red;"></span>
+
+    <div><p></p></div>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <lable for="fornavn">Fornavn:</lable>
+                    <input type="text" class="form-control" id="fornavn">
+                </div>
+            <td id="wrongFirstName" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <lable for="etternavn">Etternavn:</lable>
+                    <input type="text" class="form-control" id="etternavn">
+                </div>
+            <td id="wrongLastName" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <lable for="telefonnr">Telefonnr:</lable>
+                    <input type="tel" class="form-control" id="telefonnr">
+                </div>
+            <td id="wrongNumber" style="color:red;"></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="epost">Email address:</label>
+                    <input type="email" class="form-control" id="epost">
+                </div>
+            <td id="wrongEmail" style="color:red;"></td>
+        </tr>
+    </table>
+
+    <button class="btn btn-success" onclick="buyTicket();return false" type="button">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Kjøp billett(er)
+    </button>
+
+    <div><p></p></div>
+
+    <h2></h2>
+
+    <h3>Alle billetter</h3>
+    <div id="/tickets/list" class="table table-striped table-bordered"></div>
+
+    <button type="button" class="btn btn-danger" onclick="deleteAll()">
+        <span class="glyphicon glyphicon-trash"></span> Slett alle billettene
+    </button>
+
+    <div id="ut"></div>
+</form>
+</body>
+</html>
