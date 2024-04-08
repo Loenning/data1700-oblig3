@@ -56,8 +56,8 @@ function buyTicket() {
             "epost": document.getElementById("epost").value
         };
         //console.log(ticket); //good for debugging in case the elements from student are no
-        $.post("/tickets/add", ticket, function (){
-            listTickets()
+        $.post("/tickets/save", ticket, function (){
+            getAllTickets()
         })
 
 //------ Resetting the variable values once the order is pushed
@@ -72,12 +72,9 @@ function buyTicket() {
 
 
 //------ Function for printing out the tickets array
-function listTickets(data) {
-        // need to read the array of objects that we received
-        // [stud1,stud2,stud3]
-        //console.log(data)
-    $.get("/tickets/list", function (data){
-        let dinamicHtml= `<table class="table table-striped table-bordered">
+function getAllTickets() {
+    $.get("/tickets/getAll", function (tickets){
+        let dynamicHtml= `<table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <td>Film</td>
@@ -89,9 +86,9 @@ function listTickets(data) {
                         </tr>
                     </thead>
                     `;
-        data?.forEach(function(ticket){
+         tickets?.forEach(function(ticket){
             // dynamically create html around the list of object
-            dinamicHtml +=`<tbody>
+            dynamicHtml +=`<tbody>
                                 <tr>
                                     <td> ${ticket.film} </td>
                                     <td> ${ticket.antall} </td>
@@ -102,15 +99,15 @@ function listTickets(data) {
                                 </tr>
                            </tbody>`
         })
-        dinamicHtml+="</table>"
-        document.getElementById("/tickets/list").innerHTML = dinamicHtml;
+        dynamicHtml+="</table>"
+        document.getElementById("/tickets/getAll").innerHTML = dynamicHtml;
     })
 
 }
 
 //------ Function that empties the array when the button is pressed
 function deleteAll() {
-    $.post("tickets/clear", function (response){
-        listTickets(response)
+    $.post("tickets/clearAll", function (){
+        getAllTickets()
     })
 }
