@@ -9,6 +9,10 @@ public class Ticket {
     private String telefonnr;
     private String epost;
 
+    public Ticket(){
+
+    }
+
     public Ticket(Integer Id, String film, Integer antall, String fornavn, String etternavn, String telefonnr, String epost) {
         this.Id = Id;
         this.film = film;
