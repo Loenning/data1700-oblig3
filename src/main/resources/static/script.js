@@ -111,3 +111,12 @@ function deleteAll() {
         getAllTickets()
     })
 }
+
+function fyllSkjema() {
+    $('#film').val("The Big Short");
+    $('#antall').val("1");
+    $('#fornavn').val("abc");
+    $('#etternavn').val("def");
+    $('#telefonnr').val("12345678");
+    $('#epost').val("abc@def.no");
+}

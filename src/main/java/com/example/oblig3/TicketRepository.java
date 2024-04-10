@@ -21,7 +21,7 @@ public class TicketRepository {
         db.update(sql,ticket.getFilm(),ticket.getAntall(),ticket.getFornavn(),ticket.getEtternavn(),ticket.getTelefonnr(),ticket.getEpost());
     }
     public ArrayList<Ticket> getAllTickets() {
-        String sql = "SELECT * FROM tickets";
+        String sql = "SELECT * FROM tickets ORDER BY etternavn ASC";
         List<Ticket> allTickets = db.query(sql,new BeanPropertyRowMapper<>(Ticket.class));
         return new ArrayList<>(allTickets);
     }
