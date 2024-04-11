@@ -74,7 +74,7 @@ function buyTicket() {
 //------ Function for printing out the tickets array
 function getAllTickets() {
     $.get("/tickets/getAll", function (tickets){
-        let dynamicHtml= `<table class="table table-striped table-bordered">
+        let ticketlist= `<table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <td>Film</td>
@@ -88,7 +88,7 @@ function getAllTickets() {
                     `;
          tickets?.forEach(function(ticket){
             // dynamically create html around the list of object
-            dynamicHtml +=`<tbody>
+            ticketlist +=`<tbody>
                                 <tr>
                                     <td> ${ticket.film} </td>
                                     <td> ${ticket.antall} </td>
@@ -99,8 +99,8 @@ function getAllTickets() {
                                 </tr>
                            </tbody>`
         })
-        dynamicHtml+="</table>"
-        document.getElementById("/tickets/getAll").innerHTML = dynamicHtml;
+        ticketlist+="</table>"
+        document.getElementById("/tickets/getAll").innerHTML = ticketlist;
     })
 
 }
@@ -112,6 +112,7 @@ function deleteAll() {
     })
 }
 
+/// ------ Function that fills in given values to the ticket order for easier/quicker testing
 function fyllSkjema() {
     $('#film').val("The Big Short");
     $('#antall').val("1");

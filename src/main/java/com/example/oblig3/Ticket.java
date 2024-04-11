@@ -1,5 +1,6 @@
 package com.example.oblig3;
 
+//-------Ticket class for making ticket orders. Added "id" as an attribute to serve as Primary Key for each ticket order
 public class Ticket {
     private Integer Id;
     private String film;
@@ -9,10 +10,11 @@ public class Ticket {
     private String telefonnr;
     private String epost;
 
+//-------Added empty constructor to enable BeanPropertyRowMapper to translate the SQL to Java
     public Ticket(){
 
     }
-
+//-------Constructor for the ticket objects --------------------------------
     public Ticket(Integer Id, String film, Integer antall, String fornavn, String etternavn, String telefonnr, String epost) {
         this.Id = Id;
         this.film = film;
@@ -23,6 +25,7 @@ public class Ticket {
         this.epost = epost;
     }
 
+//------Getters and setters  ------------------------------------------------
     public Integer getId() {
         return Id;
     }
@@ -79,6 +82,8 @@ public class Ticket {
         this.epost = epost;
     }
 
+
+    //------ToString
     @Override
     public String toString() {
         return "Ticket{" +

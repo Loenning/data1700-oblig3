@@ -11,24 +11,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+//--------Class is used to call the database
 @Repository
 public class TicketRepository {
 
+//--------Spring handles the start-up of the database, and uses the "db"-object to access it
     @Autowired
     private JdbcTemplate db;
+
+//--------Function for saving tickets in the database.
     public void saveTicket(Ticket ticket) {
-        String sql = "INSERT INTO tickets (film,antall,fornavn,etternavn,telefonnr,epost) VALUES(?,?,?,?,?,?)";
-        db.update(sql,ticket.getFilm(),ticket.getAntall(),ticket.getFornavn(),ticket.getEtternavn(),ticket.getTelefonnr(),ticket.getEpost());
+        String ticketSQL = "INSERT INTO tickets (film,antall,fornavn,etternavn,telefonnr,epost) VALUES(?,?,?,?,?,?)";
+        db.update(ticketSQL,ticket.getFilm(),ticket.getAntall(),ticket.getFornavn(),ticket.getEtternavn(),ticket.getTelefonnr(),ticket.getEpost());
     }
+
+//--------Function for retrieving all the tickets from the database, where the tickets will be ordered by last names alphabetically
     public ArrayList<Ticket> getAllTickets() {
-        String sql = "SELECT * FROM tickets ORDER BY etternavn ASC";
-        List<Ticket> allTickets = db.query(sql,new BeanPropertyRowMapper<>(Ticket.class));
+        String ticketSQL = "SELECT * FROM tickets ORDER BY etternavn ASC";
+        List<Ticket> allTickets = db.query(ticketSQL,new BeanPropertyRowMapper<>(Ticket.class));
         return new ArrayList<>(allTickets);
     }
+
+//--------Function for deleting all the tickets from the database
     public void clearAllTickets () {
-        String sql = "DELETE from tickets";
-        db.update(sql);
+        String ticketSQL = "DELETE from tickets";
+        db.update(ticketSQL);
     }
-
-
 }
