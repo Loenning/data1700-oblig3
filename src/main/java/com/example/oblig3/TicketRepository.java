@@ -3,11 +3,7 @@ package com.example.oblig3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +21,9 @@ public class TicketRepository {
         db.update(ticketSQL,ticket.getFilm(),ticket.getAntall(),ticket.getFornavn(),ticket.getEtternavn(),ticket.getTelefonnr(),ticket.getEpost());
     }
 
-//--------Function for retrieving all the tickets from the database, where the tickets will be ordered by last names alphabetically
+//--------Function for retrieving all the tickets from the database, where the tickets will be ordered by last names (converted to upper-case) alphabetically
     public ArrayList<Ticket> getAllTickets() {
-        String ticketSQL = "SELECT * FROM tickets ORDER BY etternavn ASC";
+        String ticketSQL = "SELECT * FROM tickets ORDER BY UPPER(etternavn) ASC";
         List<Ticket> allTickets = db.query(ticketSQL,new BeanPropertyRowMapper<>(Ticket.class));
         return new ArrayList<>(allTickets);
     }
