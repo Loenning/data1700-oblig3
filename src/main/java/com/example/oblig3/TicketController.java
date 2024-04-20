@@ -32,8 +32,10 @@ public class TicketController {
         rep.clearAllTickets();
     }
 
-    @DeleteMapping("/tickets/clearTicket/{id}")
-    public void clearTicket(@PathVariable String id){
-        rep.clearTicket(Integer.parseInt(id));
+    @DeleteMapping("/tickets/clearTicket")
+    public String clearTicket(@RequestParam("id") Long id) {
+        // Parse the ID to integer before using it
+        rep.clearTicket(id);
+        return "deleted";
     }
 }

@@ -35,7 +35,7 @@ public class TicketRepository {
         db.update(ticketSQL);
     }
 
-    public void clearTicket (Integer id) {
+    public void clearTicket (Long id) {
         String ticketSQL = "DELETE from tickets WHERE id = "+id;
         db.update(ticketSQL);
     }

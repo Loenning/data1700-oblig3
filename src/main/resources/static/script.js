@@ -121,8 +121,9 @@ function deleteAll() {
 function deleteTicket(id) {
     console.log(id)
     $.ajax({
-        url : '/tickets/clearTicket/'+id,
+        url : '/tickets/clearTicket?id='+id,
         type : 'DELETE',
+        data: {id: id},
         success : function (){
             getAllTickets();
         }
