@@ -83,11 +83,13 @@ function getAllTickets() {
                             <td>Etternavn</td>
                             <td>Telefonnummer</td>
                             <td>Epost</td>
+                            <td></td>
                         </tr>
                     </thead>
                     `;
          tickets?.forEach(function(ticket){
             // dynamically create html around the list of object
+             console.log('String',ticket.id)
             ticketlist +=`<tbody>
                                 <tr>
                                     <td> ${ticket.film} </td>
@@ -96,6 +98,10 @@ function getAllTickets() {
                                     <td> ${ticket.etternavn} </td>
                                     <td> ${ticket.telefonnr} </td>
                                     <td> ${ticket.epost} </td>
+                                    <td> <button type="button" class="btn btn-danger" onclick='deleteTicket(${ticket.id})'>
+                                         <span class="glyphicon glyphicon-trash"></span> Slett
+                                         </button>
+                                    </td>       
                                 </tr>
                            </tbody>`
         })
@@ -112,12 +118,23 @@ function deleteAll() {
     })
 }
 
+function deleteTicket(id) {
+    console.log(id)
+    $.ajax({
+        url : '/tickets/clearTicket/'+id,
+        type : 'DELETE',
+        success : function (){
+            getAllTickets();
+        }
+    })
+}
+
 /// ------ Function that fills in given values to the ticket order for easier/quicker testing
-function fyllSkjema() {
+function autoFillIn() {
     $('#film').val("The Big Short");
     $('#antall').val("1");
-    $('#fornavn').val("abc");
-    $('#etternavn').val("def");
+    $('#fornavn').val("Arne");
+    $('#etternavn').val("Amundsen");
     $('#telefonnr').val("12345678");
     $('#epost').val("abc@def.no");
 }

@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
 
 //--------Class is used to call the database
 @Repository
@@ -31,6 +32,11 @@ public class TicketRepository {
 //--------Function for deleting all the tickets from the database
     public void clearAllTickets () {
         String ticketSQL = "DELETE from tickets";
+        db.update(ticketSQL);
+    }
+
+    public void clearTicket (Integer id) {
+        String ticketSQL = "DELETE from tickets WHERE id = "+id;
         db.update(ticketSQL);
     }
 }

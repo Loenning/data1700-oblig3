@@ -1,9 +1,7 @@
 package com.example.oblig3;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -32,5 +30,10 @@ public class TicketController {
     @PostMapping("/tickets/clearAll")
     public void clearAllTickets() {
         rep.clearAllTickets();
+    }
+
+    @DeleteMapping("/tickets/clearTicket/{id}")
+    public void clearTicket(@PathVariable String id){
+        rep.clearTicket(Integer.parseInt(id));
     }
 }

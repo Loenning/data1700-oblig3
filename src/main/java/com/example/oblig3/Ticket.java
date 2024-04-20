@@ -2,7 +2,7 @@ package com.example.oblig3;
 
 //-------Ticket class for making ticket orders. Added "id" as an attribute to serve as Primary Key for each ticket order
 public class Ticket {
-    private Integer Id;
+    private Integer id;
     private String film;
     private Integer antall;
     private String fornavn;
@@ -15,8 +15,8 @@ public class Ticket {
 
     }
 //-------Constructor for the ticket objects --------------------------------
-    public Ticket(Integer Id, String film, Integer antall, String fornavn, String etternavn, String telefonnr, String epost) {
-        this.Id = Id;
+    public Ticket(Integer id, String film, Integer antall, String fornavn, String etternavn, String telefonnr, String epost) {
+        this.id = id;
         this.film = film;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -27,11 +27,11 @@ public class Ticket {
 
 //------Getters and setters  ------------------------------------------------
     public Integer getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Integer Id) {
-        this.Id = Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFilm() {
