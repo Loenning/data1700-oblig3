@@ -11,14 +11,14 @@ Fullt navn: Thomas Stavik Lønning
 Kort beskrivelse av applikasjon (5-10 setninger):
 
 In this assignment, the goal is to create a web application for ordering movie tickets.
-It also allows for deleting the tickets that have been ordered.
+The tickets are in this instance Java objects, and instead of having the tickets in an array on the server
+the tickets are now stored in an ER database.
+The tickets are then fetched from the database and displayed on the website in alphabetical order based on last names
+It also allows for deleting single tickets or all the tickets from the database.
 
-This is done by the use of two main functions, buyTicket and deleteAll.
-The function buyTicket gathers input values, while validating the input using regex, while
-also checking for empty input fields.
-If the input is validated as correct, an order is created and pushed into an array "tickets".
-Following this, the value for each variable is reset, and the function showOrder prints out
-the order with the validated inputs.
+Tickets are created in the Ticket Java class using the "buyTicket function" and inputs are validated using regex.
+Tickets are added, fetched and deleted from the H2-database using JDBC, which is done for learning purposes. 
+The TicketRepository class includes all functions that interacts with the database using SQL segments
 
 For some reason, the regex [a-åA-Å] did not include the character "øØ" which is why this is
 written manually into the regex.
