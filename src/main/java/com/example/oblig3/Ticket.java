@@ -10,11 +10,12 @@ public class Ticket {
     private String telefonnr;
     private String epost;
 
-//-------Added empty constructor to enable BeanPropertyRowMapper to translate the SQL to Java
-    public Ticket(){
+    //-------Added empty constructor to enable BeanPropertyRowMapper to translate the SQL to Java
+    public Ticket() {
 
     }
-//-------Constructor for the ticket objects --------------------------------
+
+    //-------Constructor for the ticket objects --------------------------------
     public Ticket(Long id, String film, Integer antall, String fornavn, String etternavn, String telefonnr, String epost) {
         this.id = id;
         this.film = film;
@@ -25,7 +26,7 @@ public class Ticket {
         this.epost = epost;
     }
 
-//------Getters and setters  ------------------------------------------------
+    //------Getters and setters  ------------------------------------------------
     public long getId() {
         return id;
     }

@@ -25,7 +25,7 @@ function buyTicket() {
             errorElement.innerText = "";
             return;
         }
-        // ELse the wrongInput variable changes to true
+        // Else the wrongInput variable changes to true
         wrongInput = true;
         // Checks to see if the input field is empty or not and shows the correlated error message
         if (!value) {
@@ -56,7 +56,7 @@ function buyTicket() {
             "epost": document.getElementById("epost").value
         };
         //console.log(ticket); //good for debugging in case the elements from student are no
-        $.post("/tickets/save", ticket, function (){
+        $.post("/tickets/save", ticket, function () {
             getAllTickets()
         })
 
@@ -73,8 +73,8 @@ function buyTicket() {
 
 //------ Function for printing out the tickets array
 function getAllTickets() {
-    $.get("/tickets/getAll", function (tickets){
-        let ticketlist= `<table class="table table-striped table-bordered">
+    $.get("/tickets/getAll", function (tickets) {
+        let ticketlist = `<table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <td>Film</td>
@@ -87,10 +87,9 @@ function getAllTickets() {
                         </tr>
                     </thead>
                     `;
-         tickets?.forEach(function(ticket){
-            // dynamically create html around the list of object
-             console.log('String',ticket.id)
-            ticketlist +=`<tbody>
+        tickets?.forEach(function (ticket) {
+            console.log('String', ticket.id)
+            ticketlist += `<tbody>
                                 <tr>
                                     <td> ${ticket.film} </td>
                                     <td> ${ticket.antall} </td>
@@ -105,7 +104,7 @@ function getAllTickets() {
                                 </tr>
                            </tbody>`
         })
-        ticketlist+="</table>"
+        ticketlist += "</table>"
         document.getElementById("/tickets/getAll").innerHTML = ticketlist;
     })
 
@@ -113,24 +112,25 @@ function getAllTickets() {
 
 //------ Function that empties the array when the button is pressed
 function deleteAll() {
-    $.post("tickets/clearAll", function (){
+    $.post("tickets/clearAll", function () {
         getAllTickets()
     })
 }
 
+//------ Function that deletes a single ticket
 function deleteTicket(id) {
     console.log(id)
     $.ajax({
-        url : '/tickets/clearTicket?id='+id,
-        type : 'DELETE',
+        url: '/tickets/clearTicket?id=' + id,
+        type: 'DELETE',
         data: {id: id},
-        success : function (){
+        success: function () {
             getAllTickets();
         }
     })
 }
 
-/// ------ Function that fills in given values to the ticket order for easier/quicker testing
+//------ Function that fills in given values to the ticket order for easier/quicker testing
 function autoFillIn() {
     $('#film').val("The Big Short");
     $('#antall').val("1");
