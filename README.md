@@ -1,14 +1,14 @@
 Oblig 3
 =======
-OsloMet brukernavn: thlon2720
+OsloMet username: thlon2720
 
-GitHub brukernavn: Loenning
+GitHub username: Loenning
 
-Github repo URL: https://github.com/Loenning/data1700-oblig1
+Github repo URL: https://github.com/Loenning/data1700-oblig3
 
-Fullt navn: Thomas Stavik Lønning
+Full name: Thomas Stavik Lønning
 
-Kort beskrivelse av applikasjon (5-10 setninger):
+Short description (5-10 sentences):
 
 In this assignment, the goal is to create a web application for ordering movie tickets.
 The tickets are in this instance Java objects, and instead of having the tickets in an array on the server
