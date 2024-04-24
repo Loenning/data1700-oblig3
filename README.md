@@ -6,6 +6,8 @@ GitHub username: Loenning
 
 Github repo URL: https://github.com/Loenning/data1700-oblig3
 
+Video showcase: https://youtu.be/o-K7ZMgZFXs
+
 Full name: Thomas Stavik Lønning
 
 Short description (5-10 sentences):
