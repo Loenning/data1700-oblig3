@@ -38,4 +38,14 @@ public class TicketController {
         rep.clearTicket(id);
         return "deleted";
     }
+
+    @GetMapping("/getTicket")
+    public Ticket getTicket(Long id) {
+        return rep.getTicket(id);
+    }
+
+    @PostMapping("/updateTicket")
+    public void updateTicket(@RequestParam("id") Long id, Ticket ticket) {
+        rep.updateTicket(id, ticket);
+    }
 }

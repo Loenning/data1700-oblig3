@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.SQLException;
@@ -37,7 +38,25 @@ public class TicketRepository {
     }
     //--------Function for deleting a single ticket from the database
     public void clearTicket(Long id) {
-        String ticketSQL = "DELETE from tickets WHERE id = " + id;
+        String ticketSQL = "DELETE FROM tickets WHERE id = " + id;
         db.update(ticketSQL);
+    }
+
+    public void updateTicket(Long id, Ticket ticket) {
+        String sql = "UPDATE tickets " +
+                "SET film = '" + ticket.getFilm() + "' , " +
+                "antall = " + ticket.getAntall() + " , " +
+                "fornavn = '" + ticket.getFornavn() + "' , " +
+                "etternavn = '" + ticket.getEtternavn() + "' , " +
+                "telefonnr = '" + ticket.getTelefonnr() + "' , " +
+                "epost = '" + ticket.getEpost() + "' " +
+                "where id = " + id;
+        db.update(sql);
+    }
+
+    public Ticket getTicket(Long id) {
+        String sql = "select * from tickets where id = " + id;
+        Ticket ticket = db.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class));
+        return ticket;
     }
 }

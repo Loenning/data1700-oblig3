@@ -1,7 +1,7 @@
 drop table if exists tickets;
 CREATE TABLE tickets
 (
-    id IDENTITY NOT NULL PRIMARY KEY,
+    id        INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     film      VARCHAR(50)  NOT NULL,
     antall    INT          NOT NULL CHECK (antall >= 0),
     fornavn   VARCHAR(50)  NOT NULL,

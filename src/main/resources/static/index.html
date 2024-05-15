@@ -23,7 +23,7 @@
 </head>
 
 <body>
-<form>
+<form id="ticketSchema">
     <div class="jumbotron">
         <h1>Bestilling av kinobilletter</h1>
     </div>
@@ -82,7 +82,7 @@
         </tr>
     </table>
 
-    <button class="btn btn-success" onclick="buyTicket();return false" type="button">
+    <button class="btn btn-success" onclick="buyTicket();return false" id="buyTicketButton" type="button">
         <span class="glyphicon glyphicon-shopping-cart"></span> Kjøp billett(er)
     </button>
 
@@ -97,6 +97,9 @@
 
     <button type="button" class="btn btn-danger" onclick="deleteAll()">
         <span class="glyphicon glyphicon-trash"></span> Slett alle billettene
+    </button>
+    <button type="button" class="btn btn-info" onclick="saveUpdatedTicket()" id="updateButton">
+        <span class="glyphicon glyphicon-scissors"></span> Lagre endret billett
     </button>
 
     <div id="ut"></div>

@@ -97,6 +97,8 @@ function getAllTickets() {
                                     <td> ${ticket.etternavn} </td>
                                     <td> ${ticket.telefonnr} </td>
                                     <td> ${ticket.epost} </td>
+                                    <td> <button type="button" class="btn btn-info" onclick='editTicket(${ticket.id})'>
+                                        <span class="glyphicon glyphicon-scissors"
                                     <td> <button type="button" class="btn btn-danger" onclick='deleteTicket(${ticket.id})'>
                                          <span class="glyphicon glyphicon-trash"></span> Slett
                                          </button>
@@ -138,4 +140,47 @@ function autoFillIn() {
     $('#etternavn').val("Amundsen");
     $('#telefonnr').val("12345678");
     $('#epost').val("abc@def.no");
+}
+
+
+function editTicket(id) {
+    console.log(id)
+    $.ajax({
+        url : "/getTicket",
+        type : "GET",
+        data: {id: id},
+        success : function (data) {
+            $('#film').val(data.film);
+            $('#antall').val(data.antall);
+            $('#fornavn').val(data.fornavn);
+            $('#etternavn').val(data.etternavn);
+            $('#telefonnr').val(data.telefonnr);
+            $('#epost').val(data.epost);
+
+            document.getElementById('buyTicketButton').setAttribute('disabled','');
+            $('#updateButton').html("<button onClick='saveUpdatedTicket("+data.id+")'>Lagre endret billett</button>");
+        }
+    })
+}
+
+function saveUpdatedTicket(id) {
+        let ticket = newTicket();
+        $.post("/updateTicket?id=" + id, ticket, function () {
+            getAllTickets();
+        });
+        document.getElementById('ticketSchema').reset();
+        document.getElementById('buyTicketButton').removeAttribute("disabled");
+        $('#updateButton').html("<br>");
+
+}
+
+function newTicket() {
+    return {
+        film: $('#film').val(),
+        antall: $('#antall').val(),
+        fornavn: $('#fornavn').val(),
+        etternavn: $('#etternavn').val(),
+        telefonnr: $('#telefonnr').val(),
+        epost: $('#epost').val()
+    };
 }
