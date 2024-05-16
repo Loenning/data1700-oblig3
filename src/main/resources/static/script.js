@@ -1,5 +1,9 @@
 const fieldIds = ['movie', 'count', 'firstname', 'lastname', 'tel', 'email'];
 
+$(document).ready(function () {
+    registerTestUser();
+});
+
 //------function for buying tickets
 function buyTicket() {
     const film = document.getElementById("film");
@@ -183,4 +187,47 @@ function newTicket() {
         telefonnr: $('#telefonnr').val(),
         epost: $('#epost').val()
     };
+}
+
+
+function login(){
+    const credentials = {
+        username : $("#username").val(),
+        password : $("#password").val()
+    }
+    $.get("/login", credentials, function(loggedIn){
+        if(loggedIn){
+            getAllTickets();
+            $("#username").val("");
+            $("#password").val("");
+            alert("login successful");
+        } else {
+            alert("login failed");
+        }
+    });
+}
+
+function logout(){
+    $.get("/logout", function(loggedOut){
+        if(loggedOut){
+            getAllTickets();
+            alert("logout successful");
+        } else {
+            alert("logout failed");
+        }
+    })
+}
+
+function registerTestUser() {
+    const testUser = {
+        username : "test",
+        password : "test123"
+    }
+    $.post("/registerTestUser", testUser, function () {
+        console.log("testUser created");
+    })
+        .fail(function(jqXHR){
+            const json = $.parseJSON(jqXHR.responseText);
+            console.log(json.message);
+        });
 }

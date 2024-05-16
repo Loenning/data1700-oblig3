@@ -32,7 +32,6 @@ public class TicketController {
         rep.clearAllTickets();
     }
 
-    //------- Calls the clearTicket function, extracts the "id" query parameter
     @DeleteMapping("/tickets/clearTicket")
     public String clearTicket(@RequestParam("id") Long id) {
         rep.clearTicket(id);

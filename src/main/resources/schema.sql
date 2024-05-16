@@ -9,3 +9,12 @@ CREATE TABLE tickets
     telefonnr VARCHAR(20)  NOT NULL,
     epost     VARCHAR(100) NOT NULL
 );
+
+drop table if exists users;
+CREATE TABLE users
+(
+    userid   INT AUTO_INCREMENT NOT NULL,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    primary key (userid)
+);
